@@ -8,7 +8,7 @@ App.conversation = App.cable.subscriptions.create("ConversationChannel", {
   },
 
   received: function(data) {
-
+    console.log(data);
     var conversation = $('#conversations-list').find("[data-conversation-id='" + data['conversation_id'] + "']");
 
     if (data['window'] !== undefined) {
@@ -39,7 +39,7 @@ App.conversation = App.cable.subscriptions.create("ConversationChannel", {
 
   speak: function(message) {
     return this.perform('speak', {
-      message: message
+      message: message,
     });
   }
 });
